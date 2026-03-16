@@ -46,7 +46,9 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
   return data.data;
 };
 
-export const fetchAchievements = async (category?: string): Promise<Achievement[]> => {
+export const fetchAchievements = async (
+  category?: string,
+): Promise<Achievement[]> => {
   const params = category && category !== "All" ? { category } : {};
   const { data } = await api.get("/achievements", { params });
   return data.data;
@@ -56,3 +58,5 @@ export const sendContactMessage = async (payload: ContactPayload) => {
   const { data } = await api.post("/contact", payload);
   return data;
 };
+
+console.log("API URL:", import.meta.env.VITE_API_URL);
